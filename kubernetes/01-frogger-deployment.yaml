@@ -1,0 +1,48 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: frogger
+  labels:
+    app: frogger
+spec:
+  selector:
+    app: frogger
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frogger
+  labels:
+    app: frogger
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frogger
+  template:
+    metadata:
+      labels:
+        app: frogger
+    spec:
+      containers:
+      - name: frogger
+        image: theologian/frogger:v0.0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - "frogger"
+            topologyKey: topology.kubernetes.io/hostname
