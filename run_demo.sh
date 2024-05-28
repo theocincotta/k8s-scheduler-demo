@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
-# TITLE       : k8s scheduleir demo
-# DESCRIPTION : k8s-scheduleir-demo
+# TITLE       : k8s scheduler demo
+# DESCRIPTION : k8s-scheduler-demo
 # AUTHOR      : Theo Cincotta <theodorecincotta@gmail.com>
 # DATE        : 05272024
 # VERSION     : 0.0.1
