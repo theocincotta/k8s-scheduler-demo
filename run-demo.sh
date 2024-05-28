@@ -3,9 +3,9 @@
 # TITLE       : k8s scheduler demo
 # DESCRIPTION : k8s-scheduler-demo
 # AUTHOR      : Theo Cincotta <theodorecincotta@gmail.com>
-# DATE        : 05272024
+# DATE        : 05272028
 # VERSION     : 0.0.1
-# USAGE       : bash kubernetes.sh or ./kubernetes.sh or …
+# USAGE       : bash run-demo.sh or ./run-demo.sh or …
 # REPOSITORY  : https://github.com/theocincotta/k8s-scheduler-demo
 # -------------------------------------------------------------------
 #
