@@ -35,6 +35,17 @@ function exec_cmd() {
   }
 }
 
+if ! [ -x "$(command -v kind)" ]; then
+  echo 'Error: kind is not installed.' >&2
+  exit 1
+fi
+
+if ! [ -x "$(command -v kubectl)" ]; then
+  echo 'Error: kubectl is not installed.' >&2
+  exit 1
+fi
+
+
 echo ""
 echo "We are about to install a four node kind kubernetes cluster." 
 echo "If you want to stop at any time you can Control-C."
@@ -68,11 +79,9 @@ pause_script
 
 # label one node
 echo ""
-#echo "kubectl label node k8s-scheduling-demo-worker2 team=devops"
 exec_cmd kubectl label node k8s-scheduling-demo-worker2 team=devops
 
 echo ""
-echo "kubectl label node k8s-scheduling-demo-worker3 team=devops"
 exec_cmd kubectl label node k8s-scheduling-demo-worker3 team=devops
 
 echo ""
@@ -81,7 +90,6 @@ echo ""
 exec_cmd kubectl get nodes k8s-scheduling-demo-worker2 --show-labels
 
 echo ""
-echo "kubectl get nodes -l team=devops"
 exec_cmd kubectl get nodes -l team=devops
 
 # nodeSelector
