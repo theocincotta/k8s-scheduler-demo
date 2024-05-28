@@ -6,7 +6,7 @@
 # DATE        : 05272024
 # VERSION     : 0.0.1
 # USAGE       : bash kubernetes.sh or ./kubernetes.sh or …
-# REPOSITORY  : https://github.com/theocincotta/k8s-scheduleir-demo
+# REPOSITORY  : https://github.com/theocincotta/k8s-scheduler-demo
 # -------------------------------------------------------------------
 #
 # https://kubernetes.io/docs/concepts/scheduling-eviction/
@@ -144,14 +144,12 @@ pause_script
 
 echo ""
 exec_cmd kubectl taint node k8s-scheduling-demo-worker2 evn=production:NoSchedule
+# Remove taint.
 # kubectl taint node k8s-scheduling-demo-worker2 evn=production:NoSchedule-
 
 echo ""
 exec_cmd kubectl describe node k8s-scheduling-demo-worker2 
 pause_script
-
-# https://medium.com/saas-infra/taints-and-tolerations-node-affinity-and-node-selector-explained-f329653c2bc6
-# https://komodor.com/learn/node-affinity/
 
 echo "Now you can play the two games you setup by running these in two new termias"
 echo "kubectl port-forward deployment/frogger 8080:80"
